@@ -13,7 +13,7 @@ import { RegisterDto } from './dtos/register.dto';
 import { LoginDto } from './dtos/login.dto';
 import { JwtAuthGuard } from './guards/JwtAuthGuard';
 import { Roles } from './decorators/roles.decorator';
-import { UserRole } from './entity/user.entity';
+import { User, UserRole } from './entity/user.entity';
 import { RolesGuard } from './guards/roles.guard';
 import { CurrentUser } from './decorators/currentuser.decorator';
 import { LoginThrottlerGuard } from './guards/login-throller.guard';
@@ -50,7 +50,7 @@ export class AuthController {
 
   @UseGuards(JwtAuthGuard)
   @Get('profile')
-  profile(@CurrentUser() user: any) {
+  profile(@CurrentUser() user: User) {
     return user;
   }
 

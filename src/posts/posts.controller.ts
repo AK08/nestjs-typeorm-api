@@ -11,12 +11,12 @@ import {
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dtos/create-post.dto';
-import { CurrentUser } from 'src/auth/decorators/currentuser.decorator';
-import { JwtAuthGuard } from 'src/auth/guards/JwtAuthGuard';
+import { CurrentUser } from '../auth/decorators/currentuser.decorator';
+import { JwtAuthGuard } from '../auth/guards/JwtAuthGuard';
 import { UpdatePostDto } from './dtos/update-post.dto';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { UserRole } from 'src/auth/entity/user.entity';
+import { RolesGuard } from '../auth/guards/roles.guard';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { User, UserRole } from '../auth/entity/user.entity';
 
 @Controller('posts')
 export class PostsController {
@@ -34,7 +34,7 @@ export class PostsController {
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  createPost(@Body() createPostDto: CreatePostDto, @CurrentUser() user: any) {
+  createPost(@Body() createPostDto: CreatePostDto, @CurrentUser() user: User) {
     return this.postsService.createPost(createPostDto, user);
   }
 
@@ -43,7 +43,7 @@ export class PostsController {
   updatePost(
     @Body() updatePostDto: UpdatePostDto,
     @Param('id', ParseIntPipe) id: number,
-    @CurrentUser() user: any,
+    @CurrentUser() user: User,
   ) {
     return this.postsService.updatePost(id, updatePostDto, user);
   }
@@ -54,5 +54,4 @@ export class PostsController {
   deletePost(@Param('id', ParseIntPipe) id: number) {
     return this.postsService.deletePost(id);
   }
-  
 }

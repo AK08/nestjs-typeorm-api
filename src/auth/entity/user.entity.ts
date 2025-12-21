@@ -1,4 +1,4 @@
-import { Post } from 'src/posts/entity/post.entity';
+import { Post } from '../../posts/entity/post.entity';
 import {
   Column,
   CreateDateColumn,
@@ -27,8 +27,8 @@ export class User {
   @Column()
   password: string;
 
-  @OneToMany(()=> Post, (post)=> post.authorName)
-  posts : Post[]
+  @OneToMany(() => Post, (post) => post.authorName)
+  posts: Post[];
 
   @Column({ type: 'enum', enum: UserRole, default: UserRole.USER })
   role: UserRole;

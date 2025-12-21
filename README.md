@@ -15,17 +15,19 @@ This is a simple RESTful API built with **NestJS**, **TypeORM**, and **PostgreSQ
 
 ## 🚀 Getting Started
 
-1. Clone the repo  
+1. Clone the repo
+
    ```
    git clone https://github.com/AK08/nestjs-typeorm-api.git
    ```
 
-3. Install dependencies  
+2. Install dependencies
+
    ```
    npm install
    ```
 
-5. Set up `.env` file with the following variables:
+3. Set up `.env` file with the following variables:
 
    ```env
    JWT_SECRET=your_jwt_secret
@@ -37,7 +39,11 @@ This is a simple RESTful API built with **NestJS**, **TypeORM**, and **PostgreSQ
    DB_NAME=nestjs_project
    ```
 
-6. Run the app
+4. Create the PostgreSQL database
+
+   Before running the app, make sure a PostgreSQL database with the name specified in DB_NAME exists.
+
+5. Run the app
    ```bash
    npm run start:dev
    ```

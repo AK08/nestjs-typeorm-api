@@ -7,7 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Post } from './entity/post.entity';
 import { Repository } from 'typeorm';
 import { CreatePostDto } from './dtos/create-post.dto';
-import { User, UserRole } from 'src/auth/entity/user.entity';
+import { User, UserRole } from '../auth/entity/user.entity';
 import { UpdatePostDto } from './dtos/update-post.dto';
 
 @Injectable()
@@ -94,7 +94,7 @@ export class PostsService {
       throw new NotFoundException('No post was found to delete.');
     }
     return {
-        message : 'Post is deleted.'
-    }
+      message: 'Post is deleted.',
+    };
   }
 }
